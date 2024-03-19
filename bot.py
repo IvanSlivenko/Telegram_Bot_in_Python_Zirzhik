@@ -14,7 +14,10 @@ bot = telebot.TeleBot(str(const.APY_TOKEN))
 
 @bot.message_handler(commands=['start'])
 def start_handler(message):
-    print(dir(message))
-    bot.send_message(message.chat_id,'Дякую, що вибрали наш сервіс')
+    # print(dir(message.chat))
+    bot.send_message(
+        message.chat.id,
+        f"{message.chat.first_name or ''} ,  Дякуюємо, що вибрали наш сервіс"
+    )
 
 bot.infinity_polling()
